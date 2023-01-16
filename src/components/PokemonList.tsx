@@ -1,12 +1,16 @@
 import PokemonCard from "./PokemonCard";
 import "./PokemonList.css";
 
-const PokemonList = (props) => {
+interface PokemonListProps {
+  pokemons: any[];
+}
+
+const PokemonList = (props: PokemonListProps) => {
   const { pokemons } = props;
   return (
     <div className="PokemonList">
       {pokemons.map((pokemon) => (
-        <PokemonCard />
+        <PokemonCard key={pokemon.name} name={pokemon.name} />
       ))}
     </div>
   );

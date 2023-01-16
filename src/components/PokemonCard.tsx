@@ -2,10 +2,14 @@ import { StarOutlined } from "@ant-design/icons";
 import { Card } from "antd";
 import Meta from "antd/es/card/Meta";
 
-const PokemonCard = () => {
+interface PokemonCardProps {
+  name: string;
+}
+
+const PokemonCard = (props: PokemonCardProps) => {
   return (
     <Card
-      title="Card title"
+      title={props.name}
       hoverable
       cover={<img alt="example" src="https://via.placeholder.com/150" />}
       extra={<StarOutlined />}
