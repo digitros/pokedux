@@ -14,7 +14,7 @@ const PokemonList = (props: PokemonListProps) => {
         <PokemonCard
           key={pokemon.name}
           name={pokemon.name}
-          image={pokemon.sprites.front_default}
+          image={pokemon?.sprites?.front_default}
           abilities={pokemon.abilities}
           id={pokemon.id}
           isFavorite={pokemon.isFavorite}

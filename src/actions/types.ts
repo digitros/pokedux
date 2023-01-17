@@ -1,3 +1,0 @@
-export const SET_POKEMONS_DETAILS = "SET_POKEMONS_DETAILS";
-export const SET_LOADING = "SET_LOADING";
-export const SET_FAVORITE = "SET_FAVORITE";

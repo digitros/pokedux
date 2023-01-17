@@ -3,7 +3,7 @@ import Meta from "antd/es/card/Meta";
 import StarButton from "../StarButton/StarButton";
 import { useDispatch } from "react-redux";
 import { Dispatch } from "redux";
-import { setFavorite } from "../../actions";
+import { setFavorite } from "../../slices/dataSlice";
 
 interface PokemonCardProps {
   id: number;

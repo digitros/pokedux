@@ -1,15 +1,13 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { Col, Spin } from "antd";
 import Searcher from "./components/Searcher/Searcher";
 import PokemonList from "./components/PokemonList/PokemonList";
-import { getPokemon } from "./api";
-import { getPokemonsDetailsAction, setLoading } from "./actions";
-
 import logo from "./assets/logo.svg";
 import "./App.css";
 import { Dispatch } from "redux";
 import { IPokemonDetails } from "./types/pokemons";
+import { fetchPokemonWithDetails } from "./slices/dataSlice";
 
 type AppType = {
   pokemons: IPokemonDetails[];
@@ -17,20 +15,16 @@ type AppType = {
 };
 
 function App() {
-  const pokemons = useSelector((state: AppType) => state.pokemons);
-  const loading = useSelector((state: AppType) => state.loading);
+  const pokemons = useSelector(
+    (state: AppType) => state.data.pokemons,
+    shallowEqual
+  );
+  const loading = useSelector((state: AppType) => state.ui.loading);
   const dispatch = useDispatch<Dispatch<any>>();
 
   useEffect(() => {
-    const fetchPokemons = async () => {
-      dispatch(setLoading(true));
-      const response = await getPokemon();
-      response && dispatch(getPokemonsDetailsAction(response));
-      dispatch(setLoading(false));
-    };
-
-    fetchPokemons();
-  }, [dispatch]);
+    dispatch(fetchPokemonWithDetails());
+  }, []);
 
   return (
     <div className="App">
